@@ -1,0 +1,113 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background: url('https://th.bing.com/th/id/R.2428e93c1c5e2545fcf37f7b75b650b2?rik=Rhu5Zd470A1aJg&riu=http%3a%2f%2fgetwallpapers.com%2fwallpaper%2ffull%2ff%2fb%2f7%2f358289.jpg&ehk=9iiIVWr%2b%2fXQF1fxYJIsR%2bQnQ1bip4otLHgOBUVvdX34%3d&risl=&pid=ImgRaw&r=0') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    color: #fff;
+}
+
+.chat-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 50px auto;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.chat-header {
+    background: #000000;
+    padding: 15px;
+    text-align: left;
+    font-size: 1.5em;
+    color: #fff;
+}
+
+.chat-messages {
+    padding: 20px;
+    height: 400px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.message {
+    padding: 10px 15px;
+    border-radius: 20px;
+    max-width: 80%;
+    line-height: 1.5;
+}
+
+.message.bot {
+    background: #2e7d32;
+    align-self: flex-start;
+}
+
+.message.user {
+    background: #02bd47;
+    align-self: flex-end;
+}
+
+.message.error {
+    background: #c62828;
+    color: #fff;
+}
+
+.chat-input {
+    display: flex;
+    gap: 10px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+}
+
+.chat-input button {
+    padding: 10px 15px;
+    background: #1201ff;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 20px;
+    font-size: 1em;
+}
+
+.chat-input button:hover {
+    background: #000000;
+}
+
+/* Typing animation */
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink {
+    from, to { border-color: transparent; }
+    50% { border-color: white; }
+}
+
+.typing-indicator {
+    font-family: monospace;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid;
+    width: 0;
+    animation: typing 2s steps(20) forwards, blink 0.75s step-end infinite;
+}
+.bot{
+    border: solid 2px;
+    background-color: green;
+    border-radius: 25px;
+    padding: 10px;
+}
+

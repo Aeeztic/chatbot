@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/styles.css">
+    <title>HCI Chatbot</title>
+</head>
+<body>
+<div class="chat-container">
+<div class="chat-header">HCI Chatbot</div>
+<div class="chat-messages" id="chatBox">
+    <p class="bot">Hello! I specialize in Human-Computer Interaction (HCI). How can I assist you today?</p>
+</div>
+<div class="input-group chat-input">
+    <input type="text" id="userInput" placeholder="Type your question...">
+    <button onclick="sendMessage()">Send</button>
+</div>
+</div>
+
+<script>
+async function sendMessage() {
+    const chatBox = document.getElementById('chatBox');
+    const userInput = document.getElementById('userInput');
+    const userMessage = userInput.value.trim();
+
+    if (userMessage === '') return;
+
+    chatBox.innerHTML += `<p class="user ball message">${userMessage}</p>`;
+    userInput.value = '';
+
+  
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+ 
+    const response = await fetch('/chat', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ message: userMessage })
+    });
+
+    const data = await response.json();
+
+
+    chatBox.innerHTML += `<p class="bot ball message">${data.reply}</p>`;
+    chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+</script>
+<script src="/static/script.js"></script>
+
+</body>
+<link rel="stylesheet" href="">
+</html>
